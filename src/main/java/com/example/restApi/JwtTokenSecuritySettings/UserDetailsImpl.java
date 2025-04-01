@@ -1,5 +1,6 @@
-package com.example.restApi;
+package com.example.restApi.JwtTokenSecuritySettings;
 
+import com.example.restApi.model.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,13 +13,15 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
     private String email;
     private String role;
+    private Long idUniversity;
 
-    public UserDetailsImpl(Long id, String name, String password, String email, String role) {
+    public UserDetailsImpl(Long id, String name, String password, String email, String role, Long idUniversity ) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.idUniversity = idUniversity;
     }
 
     public static UserDetailsImpl build (User user){
@@ -27,7 +30,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getName(),
                 user.getPassword(),
                 user.getEmail(),
-                user.getRole());
+                user.getRole(),
+                user.getIduniversity());
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

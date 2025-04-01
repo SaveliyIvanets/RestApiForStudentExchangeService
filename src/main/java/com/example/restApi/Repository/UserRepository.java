@@ -1,6 +1,6 @@
-package com.example.restApi;
+package com.example.restApi.Repository;
 
-import jakarta.persistence.criteria.Predicate;
+import com.example.restApi.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

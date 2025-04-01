@@ -1,0 +1,239 @@
+2025-04-01T17:48:09.544+03:00  INFO 329364 --- [restApi] [main] com.example.restApi.RestApiApplication   : Starting RestApiApplication using Java 24 with PID 329364 (C:\Users\ivane\Desktop\Java\restApi\target\classes started by ivane in C:\Users\ivane\Desktop\Java\restApi)
+2025-04-01T17:48:09.547+03:00  INFO 329364 --- [restApi] [main] com.example.restApi.RestApiApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-01T17:48:10.297+03:00  INFO 329364 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01T17:48:10.360+03:00  INFO 329364 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 1 JPA repository interface.
+2025-04-01T17:48:10.937+03:00  INFO 329364 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-01T17:48:10.954+03:00  INFO 329364 --- [restApi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01T17:48:10.955+03:00  INFO 329364 --- [restApi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-01T17:48:11.017+03:00  INFO 329364 --- [restApi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01T17:48:11.018+03:00  INFO 329364 --- [restApi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1416 ms
+2025-04-01T17:48:11.144+03:00  INFO 329364 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01T17:48:11.335+03:00  INFO 329364 --- [restApi] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5c059a68
+2025-04-01T17:48:11.337+03:00  INFO 329364 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01T17:48:11.412+03:00  INFO 329364 --- [restApi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01T17:48:11.472+03:00  INFO 329364 --- [restApi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-01T17:48:11.511+03:00  INFO 329364 --- [restApi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-01T17:48:11.873+03:00  INFO 329364 --- [restApi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01T17:48:11.942+03:00  WARN 329364 --- [restApi] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01T17:48:11.962+03:00  INFO 329364 --- [restApi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01T17:48:12.963+03:00  INFO 329364 --- [restApi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01T17:48:12.971+03:00  INFO 329364 --- [restApi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T17:48:13.440+03:00 DEBUG 329364 --- [restApi] [main] com.example.restApi.JwtTokenSecuritySettings.TokenFilter          : Filter 'tokenFilter' configured for use
+2025-04-01T17:48:13.485+03:00  WARN 329364 --- [restApi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01T17:48:13.519+03:00  INFO 329364 --- [restApi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-04-01T17:48:13.845+03:00 DEBUG 329364 --- [restApi] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, TokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-01T17:48:14.127+03:00  INFO 329364 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-01T17:48:14.141+03:00  INFO 329364 --- [restApi] [main] com.example.restApi.RestApiApplication   : Started RestApiApplication in 5.192 seconds (process running for 5.939)
+2025-04-01T17:48:31.817+03:00  INFO 329364 --- [restApi] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-01T17:48:31.817+03:00  INFO 329364 --- [restApi] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-01T17:48:31.819+03:00  INFO 329364 --- [restApi] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-01T17:48:31.844+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:48:31.938+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:51:23.919+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /auth/joinin
+2025-04-01T17:51:23.923+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:51:23.924+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /auth/joinin
+2025-04-01T17:51:23.958+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2025-04-01T17:51:23.960+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2025-04-01T17:51:24.057+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:51:49.405+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /auth/signin
+2025-04-01T17:51:49.409+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:51:49.409+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /auth/signin
+2025-04-01T17:51:50.006+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-6] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-04-01T17:52:29.658+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /auth/signin
+2025-04-01T17:52:29.709+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /auth/signin
+2025-04-01T17:52:29.711+03:00  WARN 329364 --- [restApi] [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-01T17:52:29.712+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:52:29.713+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:52:29.715+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:52:39.433+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:52:39.439+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:52:39.440+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:52:39.440+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:52:39.443+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:52:56.327+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:52:56.329+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:53:30.059+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /auth/signin
+2025-04-01T17:53:30.061+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:53:30.061+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /auth/signin
+2025-04-01T17:53:30.296+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-10] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-04-01T17:53:47.488+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:53:47.494+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-2] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:53:47.495+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:53:47.495+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:53:47.497+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:53:57.615+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:53:57.621+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:53:57.622+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:53:57.623+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:53:57.624+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:53:59.060+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:53:59.065+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-4] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:53:59.067+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:53:59.067+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:53:59.069+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:54:01.435+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:54:01.441+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:54:01.442+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:54:01.442+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:54:01.444+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:54:09.211+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:54:09.216+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2025-04-01T17:54:09.217+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:54:09.217+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:54:09.220+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:55:36.514+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:55:36.517+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:55:39.847+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:55:39.850+03:00 DEBUG 329364 --- [restApi] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:57:07.142+03:00  INFO 329364 --- [restApi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-01T17:57:07.151+03:00  INFO 329364 --- [restApi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-01T17:57:07.158+03:00  INFO 329364 --- [restApi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T17:57:07.168+03:00  INFO 329364 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01T17:57:07.204+03:00  INFO 329364 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-01T17:57:13.677+03:00  INFO 343412 --- [restApi] [main] com.example.restApi.RestApiApplication   : Starting RestApiApplication using Java 24 with PID 343412 (C:\Users\ivane\Desktop\Java\restApi\target\classes started by ivane in C:\Users\ivane\Desktop\Java\restApi)
+2025-04-01T17:57:13.679+03:00  INFO 343412 --- [restApi] [main] com.example.restApi.RestApiApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-01T17:57:14.480+03:00  INFO 343412 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01T17:57:14.557+03:00  INFO 343412 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interface.
+2025-04-01T17:57:15.133+03:00  INFO 343412 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-01T17:57:15.151+03:00  INFO 343412 --- [restApi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01T17:57:15.151+03:00  INFO 343412 --- [restApi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-01T17:57:15.207+03:00  INFO 343412 --- [restApi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01T17:57:15.207+03:00  INFO 343412 --- [restApi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1470 ms
+2025-04-01T17:57:15.325+03:00  INFO 343412 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01T17:57:15.529+03:00  INFO 343412 --- [restApi] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1d4f5506
+2025-04-01T17:57:15.532+03:00  INFO 343412 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01T17:57:15.583+03:00  INFO 343412 --- [restApi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01T17:57:15.638+03:00  INFO 343412 --- [restApi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-01T17:57:15.678+03:00  INFO 343412 --- [restApi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-01T17:57:16.047+03:00  INFO 343412 --- [restApi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01T17:57:16.113+03:00  WARN 343412 --- [restApi] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01T17:57:16.129+03:00  INFO 343412 --- [restApi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01T17:57:17.057+03:00  INFO 343412 --- [restApi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01T17:57:17.060+03:00  INFO 343412 --- [restApi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T17:57:17.415+03:00 DEBUG 343412 --- [restApi] [main] com.example.restApi.JwtTokenSecuritySettings.TokenFilter          : Filter 'tokenFilter' configured for use
+2025-04-01T17:57:17.466+03:00  WARN 343412 --- [restApi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01T17:57:17.500+03:00  INFO 343412 --- [restApi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-04-01T17:57:17.784+03:00 DEBUG 343412 --- [restApi] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, TokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-01T17:57:18.153+03:00  INFO 343412 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-01T17:57:18.162+03:00  INFO 343412 --- [restApi] [main] com.example.restApi.RestApiApplication   : Started RestApiApplication in 5.075 seconds (process running for 5.825)
+2025-04-01T17:57:23.627+03:00  INFO 343412 --- [restApi] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-01T17:57:23.628+03:00  INFO 343412 --- [restApi] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-01T17:57:23.629+03:00  INFO 343412 --- [restApi] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-01T17:57:23.650+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /auth/signin
+2025-04-01T17:57:23.726+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:57:23.729+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /auth/signin
+2025-04-01T17:57:24.343+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-04-01T17:57:33.707+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /s
+2025-04-01T17:57:33.710+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:57:33.710+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /s
+2025-04-01T17:57:33.723+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T17:57:33.723+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T17:57:33.737+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T17:57:41.577+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T17:57:41.628+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T18:48:53.603+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T18:48:53.604+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T18:48:57.166+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T18:48:57.168+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T18:49:04.520+03:00  WARN 343412 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48m26s362ms285µs800ns).
+2025-04-01T18:49:47.798+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /auth/signin
+2025-04-01T18:49:47.800+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T18:49:47.800+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /auth/signin
+2025-04-01T18:49:47.942+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-5] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-04-01T18:50:04.817+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T18:50:04.822+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T18:50:10.437+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T18:50:10.444+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T18:50:15.485+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T18:50:15.490+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T18:55:01.134+03:00  WARN 343412 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56s607ms605µs).
+2025-04-01T18:59:42.325+03:00  WARN 343412 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m41s189ms85µs300ns).
+2025-04-01T19:10:36.237+03:00  WARN 343412 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m52s897ms768µs300ns).
+2025-04-01T19:29:37.982+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T19:29:37.985+03:00 DEBUG 343412 --- [restApi] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T19:32:59.813+03:00  INFO 343412 --- [restApi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-01T19:32:59.821+03:00  INFO 343412 --- [restApi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-01T19:32:59.828+03:00  INFO 343412 --- [restApi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T19:32:59.833+03:00  INFO 343412 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01T19:32:59.847+03:00  INFO 343412 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-01T19:33:08.290+03:00  INFO 482372 --- [restApi] [main] com.example.restApi.RestApiApplication   : Starting RestApiApplication using Java 24 with PID 482372 (C:\Users\ivane\Desktop\Java\restApi\target\classes started by ivane in C:\Users\ivane\Desktop\Java\restApi)
+2025-04-01T19:33:08.292+03:00  INFO 482372 --- [restApi] [main] com.example.restApi.RestApiApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-01T19:33:08.969+03:00  INFO 482372 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01T19:33:09.023+03:00  INFO 482372 --- [restApi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2025-04-01T19:33:09.517+03:00  INFO 482372 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-01T19:33:09.535+03:00  INFO 482372 --- [restApi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01T19:33:09.537+03:00  INFO 482372 --- [restApi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-01T19:33:09.591+03:00  INFO 482372 --- [restApi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01T19:33:09.591+03:00  INFO 482372 --- [restApi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1257 ms
+2025-04-01T19:33:09.781+03:00  INFO 482372 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01T19:33:09.976+03:00  INFO 482372 --- [restApi] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7fbd3e75
+2025-04-01T19:33:09.978+03:00  INFO 482372 --- [restApi] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01T19:33:10.038+03:00  INFO 482372 --- [restApi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01T19:33:10.124+03:00  INFO 482372 --- [restApi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-01T19:33:10.184+03:00  INFO 482372 --- [restApi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-01T19:33:10.599+03:00  INFO 482372 --- [restApi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01T19:33:10.670+03:00  WARN 482372 --- [restApi] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01T19:33:10.686+03:00  INFO 482372 --- [restApi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01T19:33:11.574+03:00  INFO 482372 --- [restApi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01T19:33:11.577+03:00  INFO 482372 --- [restApi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T19:33:11.884+03:00 DEBUG 482372 --- [restApi] [main] c.e.r.J.TokenFilter                      : Filter 'tokenFilter' configured for use
+2025-04-01T19:33:11.924+03:00  WARN 482372 --- [restApi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01T19:33:11.960+03:00  INFO 482372 --- [restApi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-04-01T19:33:12.184+03:00 DEBUG 482372 --- [restApi] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, TokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-01T19:33:12.395+03:00  INFO 482372 --- [restApi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-01T19:33:12.405+03:00  INFO 482372 --- [restApi] [main] com.example.restApi.RestApiApplication   : Started RestApiApplication in 4.538 seconds (process running for 6.045)
+2025-04-01T19:34:29.471+03:00  INFO 482372 --- [restApi] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-01T19:34:29.471+03:00  INFO 482372 --- [restApi] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-01T19:34:29.472+03:00  INFO 482372 --- [restApi] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-04-01T19:34:29.486+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /auth/signin
+2025-04-01T19:34:29.494+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T19:34:29.495+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /auth/signin
+2025-04-01T19:34:29.503+03:00  WARN 482372 --- [restApi] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-01T19:34:29.516+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-01T19:34:29.517+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-01T19:34:29.584+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T19:34:54.384+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /auth/signin
+2025-04-01T19:34:54.384+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-01T19:34:54.384+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /auth/signin
+2025-04-01T19:34:54.863+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-04-01T19:35:53.389+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T19:35:53.452+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T19:35:54.517+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T19:35:54.521+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T19:37:02.738+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T19:37:02.746+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T19:55:18.816+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m8s522ms594µs).
+2025-04-01T20:07:22.755+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m33s785ms386µs800ns).
+2025-04-01T20:22:19.955+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m27s141ms850µs300ns).
+2025-04-01T20:42:31.176+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s935ms526µs500ns).
+2025-04-01T21:04:49.803+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48s321ms184µs500ns).
+2025-04-01T22:23:17.402+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56s531ms684µs600ns).
+2025-04-01T22:47:50.982+03:00  WARN 482372 --- [restApi] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m3s389ms745µs).
+2025-04-01T22:48:13.640+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /secured/user
+2025-04-01T22:48:13.731+03:00 DEBUG 482372 --- [restApi] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /secured/user
+2025-04-01T23:05:37.769+03:00  INFO 482372 --- [restApi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-01T23:05:37.782+03:00  INFO 482372 --- [restApi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-01T23:05:37.800+03:00  INFO 482372 --- [restApi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T23:05:37.819+03:00  INFO 482372 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01T23:05:37.826+03:00  INFO 482372 --- [restApi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

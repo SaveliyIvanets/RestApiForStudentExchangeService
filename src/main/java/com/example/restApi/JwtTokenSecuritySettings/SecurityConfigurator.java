@@ -1,5 +1,6 @@
-package com.example.restApi;
+package com.example.restApi.JwtTokenSecuritySettings;
 
+import com.example.restApi.Sevices.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

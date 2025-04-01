@@ -1,13 +1,14 @@
-package com.example.restApi;
+package com.example.restApi.Sevices;
 
+import com.example.restApi.JwtTokenSecuritySettings.UserDetailsImpl;
+import com.example.restApi.Repository.UserRepository;
+import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 @Service
 public class UserService implements UserDetailsService {

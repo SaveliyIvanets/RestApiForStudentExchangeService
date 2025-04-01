@@ -1,4 +1,4 @@
-package com.example.restApi;
+package com.example.restApi.JwtTokenSecuritySettings;
 
 
 
@@ -30,4 +30,5 @@ public class JwtCore {
                 .getBody()
                 .getSubject();
     }
+
 }

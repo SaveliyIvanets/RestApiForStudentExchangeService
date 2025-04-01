@@ -1,11 +1,9 @@
-package com.example.restApi;
+package com.example.restApi.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "users")
-@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +16,19 @@ public class User {
     private String email;
     @Column
     private String role;
-    //need to add idUniversity
+
+    public Long getIduniversity() {
+        return iduniversity;
+    }
+
+    public void setIduniversity(Long iduniversity) {
+        this.iduniversity = iduniversity;
+    }
+
+    @Column
+    private Long iduniversity;
+
+
 
 
     public Long getId() {
@@ -60,4 +70,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+
 }

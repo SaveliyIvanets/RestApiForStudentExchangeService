@@ -1,7 +1,11 @@
-package com.example.restApi;
+package com.example.restApi.Controllers;
 
+import com.example.restApi.DTO.SignInDTO;
+import com.example.restApi.DTO.SignUpDTO;
+import com.example.restApi.JwtTokenSecuritySettings.JwtCore;
+import com.example.restApi.model.User;
+import com.example.restApi.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
