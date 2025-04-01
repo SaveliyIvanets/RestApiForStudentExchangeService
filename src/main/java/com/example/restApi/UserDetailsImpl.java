@@ -7,11 +7,28 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 @Data
 public class UserDetailsImpl implements UserDetails {
+    private Long id;
     private String name;
     private String password;
     private String email;
     private String role;
-    private String idUniversity;
+
+    public UserDetailsImpl(Long id, String name, String password, String email, String role) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public static UserDetailsImpl build (User user){
+        return new UserDetailsImpl(
+                user.getId(),
+                user.getName(),
+                user.getPassword(),
+                user.getEmail(),
+                user.getRole());
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -19,31 +36,31 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return name;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }
