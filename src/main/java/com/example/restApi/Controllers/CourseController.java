@@ -45,12 +45,17 @@ public class CourseController {
     }
 
     @PostMapping("/addCourse")
-    public ResponseEntity<?> addCourse(@RequestBody addCourseDto addCourseDto, Principal principal) {
+    public ResponseEntity<?> addCourse(Principal principal,@RequestBody addCourseDto addCourseDto) {
         University university = universityRepository.findByUniversity(addCourseDto.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+
         ProgramCourse programCourse = new ProgramCourse();
         programCourse.setDescription(addCourseDto.getDescription());
-        programCourse.setIdunivercity(university.getId());
+        programCourse.setIduniversity(university.getId());
+        programCourse.setMajor(addCourseDto.getMajor());
+        System.out.println(programCourse);
+
         programcourseRepository.save(programCourse);
+
         Personprogramcourse personprogramcourse = new Personprogramcourse();
         User user = userRepository.findByName(principal.getName())
                 .orElseThrow(() -> new BadCredentialsException("User not found"));

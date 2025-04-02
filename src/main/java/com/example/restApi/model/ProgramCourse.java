@@ -14,7 +14,7 @@ public class ProgramCourse {
     @Column
     private String major;
     @Column
-    private Long idunivercity;
+    private Long iduniversity;
 
     public Long getId() {
         return id;
@@ -40,12 +40,12 @@ public class ProgramCourse {
         this.major = major;
     }
 
-    public Long getIdunivercity() {
-        return idunivercity;
+    public Long getIduniversity() {
+        return iduniversity;
     }
 
-    public void setIdunivercity(Long idunivercity) {
-        this.idunivercity = idunivercity;
+    public void setIduniversity(Long idunivercity) {
+        this.iduniversity = idunivercity;
     }
 
 
