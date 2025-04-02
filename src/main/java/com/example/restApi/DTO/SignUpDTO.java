@@ -2,6 +2,19 @@ package com.example.restApi.DTO;
 
 
 public class SignUpDTO {
+    private String name;
+    private String email;
+    private String password;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    private String fullname;
     public String getName() {
         return name;
     }
@@ -26,7 +39,4 @@ public class SignUpDTO {
         this.password = password;
     }
 
-    private String name;
-    private String email;
-    private String password;
 }

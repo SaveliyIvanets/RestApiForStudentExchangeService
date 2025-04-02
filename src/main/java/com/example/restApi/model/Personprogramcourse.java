@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "personprogramcourse")
-public class personprogramcourse {
+public class Personprogramcourse {
     @Id
     private Long id_person;
+    private Long id_program;
 
     public Long getId_person() {
         return id_person;
@@ -24,7 +25,5 @@ public class personprogramcourse {
         this.id_program = id_program;
     }
 
-    @Id
-    private Long id_program;
 
 }

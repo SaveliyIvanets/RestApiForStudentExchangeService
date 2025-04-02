@@ -16,6 +16,19 @@ public class User {
     private String email;
     @Column
     private String role;
+    @Column
+    private Long iduniversity;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    @Column
+    private String fullname;
 
     public Long getIduniversity() {
         return iduniversity;
@@ -24,11 +37,6 @@ public class User {
     public void setIduniversity(Long iduniversity) {
         this.iduniversity = iduniversity;
     }
-
-    @Column
-    private Long iduniversity;
-
-
 
 
     public Long getId() {

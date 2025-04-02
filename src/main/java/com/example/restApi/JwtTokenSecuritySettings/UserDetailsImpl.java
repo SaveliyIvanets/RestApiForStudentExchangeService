@@ -14,14 +14,16 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     private String role;
     private Long idUniversity;
+    private String fullname;
 
-    public UserDetailsImpl(Long id, String name, String password, String email, String role, Long idUniversity ) {
+    public UserDetailsImpl(Long id, String name, String password, String email, String role, Long idUniversity,String fullname ) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.role = role;
         this.idUniversity = idUniversity;
+        this.fullname = fullname;
     }
 
     public static UserDetailsImpl build (User user){
@@ -31,7 +33,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getPassword(),
                 user.getEmail(),
                 user.getRole(),
-                user.getIduniversity());
+                user.getIduniversity(),
+                user.getFullname());
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

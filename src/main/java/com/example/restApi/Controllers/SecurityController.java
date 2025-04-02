@@ -26,6 +26,7 @@ public class SecurityController {
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager;
     private JwtCore jwtCore;
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -35,18 +36,20 @@ public class SecurityController {
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
     @Autowired
     public void setAuthenticationManager(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
+
     @Autowired
     public void setJwtCore(JwtCore jwtCore) {
         this.jwtCore = jwtCore;
     }
 
     @PostMapping("/signup")
-    ResponseEntity<?> signup(@RequestBody SignUpDTO signUpDto){
-        if(userRepository.existsUserByName(signUpDto.getName())){
+    ResponseEntity<?> signup(@RequestBody SignUpDTO signUpDto) {
+        if (userRepository.existsUserByName(signUpDto.getName())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Choose different username");
         }
@@ -59,6 +62,7 @@ public class SecurityController {
         user.setName(signUpDto.getName());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+        user.setFullname(signUpDto.getFullname());
 
         userRepository.save(user);
         return ResponseEntity.ok("Success, baby");
