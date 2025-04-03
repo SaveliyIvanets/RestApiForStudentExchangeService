@@ -1,11 +1,9 @@
 package com.example.restApi.Controllers;
 
 import com.example.restApi.DTO.addCourseDto;
-import com.example.restApi.Repository.PersonprogramcourseRepository;
 import com.example.restApi.Repository.ProgramcourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
-import com.example.restApi.model.Personprogramcourse;
 import com.example.restApi.model.ProgramCourse;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
@@ -22,11 +20,7 @@ public class CourseController {
     private UserRepository userRepository;
     private UniversityRepository universityRepository;
     private ProgramcourseRepository programcourseRepository;
-    private PersonprogramcourseRepository personprogramcourseRepository;
-    @Autowired
-    public void setPersonprogramcourseRepository(PersonprogramcourseRepository personprogramcourseRepository) {
-        this.personprogramcourseRepository = personprogramcourseRepository;
-    }
+
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -47,21 +41,18 @@ public class CourseController {
     @PostMapping("/addCourse")
     public ResponseEntity<?> addCourse(Principal principal,@RequestBody addCourseDto addCourseDto) {
         University university = universityRepository.findByUniversity(addCourseDto.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+        User user = userRepository.findByName(principal.getName())
+                .orElseThrow(() -> new BadCredentialsException("User not found"));
 
         ProgramCourse programCourse = new ProgramCourse();
         programCourse.setDescription(addCourseDto.getDescription());
         programCourse.setIduniversity(university.getId());
         programCourse.setMajor(addCourseDto.getMajor());
-        System.out.println(programCourse);
+        programCourse.setIduser(user.getId());
+        programCourse.setRequirement(addCourseDto.getRequirement());
 
         programcourseRepository.save(programCourse);
 
-        Personprogramcourse personprogramcourse = new Personprogramcourse();
-        User user = userRepository.findByName(principal.getName())
-                .orElseThrow(() -> new BadCredentialsException("User not found"));
-        personprogramcourse.setId_person(user.getId());
-        personprogramcourse.setId_program(programCourse.getId());
-        personprogramcourseRepository.save(personprogramcourse);
 
         return ResponseEntity.ok("Done!");
     }

@@ -4,6 +4,15 @@ public class addCourseDto {
     private String university;
     private String description;
     private String major;
+    private String requirement;
+
+    public String getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(String requirement) {
+        this.requirement = requirement;
+    }
 
     public String getMajor() {
         return major;
