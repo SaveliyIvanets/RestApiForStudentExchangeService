@@ -66,7 +66,9 @@ public class SecurityConfigurator {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/secured/**").fullyAuthenticated()
-                        .anyRequest().permitAll())
+                        .requestMatchers(HttpMethod.POST,"/user/**").fullyAuthenticated()
+                        .anyRequest().permitAll()
+                )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

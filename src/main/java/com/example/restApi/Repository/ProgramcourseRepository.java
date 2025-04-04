@@ -4,7 +4,10 @@ import com.example.restApi.model.ProgramCourse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProgramcourseRepository extends JpaRepository<ProgramCourse,Long> {
+    List<ProgramCourse> findByIduser(Long idUser);
 
 }

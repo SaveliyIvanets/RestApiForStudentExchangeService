@@ -59,7 +59,13 @@ public class CourseController {
         return ResponseEntity.ok("Done!");
     }
     @GetMapping("/allCourse")
-    public List<ProgramCourse> name(){
+    public List<ProgramCourse> allCourse(){
         return programcourseRepository.findAll();
     }
+    @GetMapping("/allCourseByUser")
+    public List<ProgramCourse> getAllCourse(Principal principal){
+        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
+        return programcourseRepository.findByIduser(user.getId());
+    }
+
 }
