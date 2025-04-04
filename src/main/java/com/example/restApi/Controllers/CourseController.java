@@ -1,6 +1,7 @@
 package com.example.restApi.Controllers;
 
-import com.example.restApi.DTO.addCourseDto;
+import com.example.restApi.DTO.AddCourseDTO;
+import com.example.restApi.DTO.GiveCourseByUserDTO;
 import com.example.restApi.Repository.ProgramcourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
@@ -41,7 +42,7 @@ public class CourseController {
     }
 
     @PostMapping("/addCourse")
-    public ResponseEntity<?> addCourse(Principal principal,@RequestBody addCourseDto addCourseDto) {
+    public ResponseEntity<?> addCourse(Principal principal,@RequestBody AddCourseDTO addCourseDto) {
         University university = universityRepository.findByUniversity(addCourseDto.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
         User user = userRepository.findByName(principal.getName())
                 .orElseThrow(() -> new BadCredentialsException("User not found"));
@@ -63,9 +64,25 @@ public class CourseController {
         return programcourseRepository.findAll();
     }
     @GetMapping("/allCourseByUser")
-    public List<ProgramCourse> getAllCourse(Principal principal){
+    public List<GiveCourseByUserDTO> getAllCourse(Principal principal){
         User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
-        return programcourseRepository.findByIduser(user.getId());
+        List<ProgramCourse> programCoursesList = programcourseRepository.findByIduser(user.getId());
+        List<GiveCourseByUserDTO> giveCourseByUserDTOList = new ArrayList<>();
+        for(ProgramCourse programCourses : programCoursesList){
+            GiveCourseByUserDTO giveCourseByUserDTO = new GiveCourseByUserDTO();
+
+            giveCourseByUserDTO.setDescription(programCourses.getDescription());
+            giveCourseByUserDTO.setMajor(programCourses.getMajor());
+            giveCourseByUserDTO.setRequirement(programCourses.getRequirement());
+            giveCourseByUserDTO.setUniversity(programCourses.getIduniversity());
+            giveCourseByUserDTO.setId(programCourses.getId());
+
+
+
+            giveCourseByUserDTOList.add(giveCourseByUserDTO);
+        }
+        System.out.println(giveCourseByUserDTOList);
+        return giveCourseByUserDTOList;
     }
 
 }

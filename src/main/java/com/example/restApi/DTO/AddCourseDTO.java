@@ -1,6 +1,6 @@
 package com.example.restApi.DTO;
 
-public class addCourseDto {
+public class AddCourseDTO {
     private String university;
     private String description;
     private String major;
