@@ -5,6 +5,7 @@ public class SignUpDTO {
     private String name;
     private String email;
     private String password;
+    private String fullname;
 
     public String getFullname() {
         return fullname;
@@ -14,7 +15,6 @@ public class SignUpDTO {
         this.fullname = fullname;
     }
 
-    private String fullname;
     public String getName() {
         return name;
     }

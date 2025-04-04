@@ -13,6 +13,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/secured")
@@ -56,8 +58,8 @@ public class CourseController {
 
         return ResponseEntity.ok("Done!");
     }
-    @GetMapping("/name")
-    public String name(Principal principal){
-        return principal.getName();
+    @GetMapping("/allCourse")
+    public List<ProgramCourse> name(){
+        return programcourseRepository.findAll();
     }
 }
