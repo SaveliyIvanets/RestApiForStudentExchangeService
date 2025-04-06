@@ -4,7 +4,15 @@ public class GiveUserDTO {
     private String email;
     private String role;
     private String fullname;
+    private String university;
 
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
 
     public String getEmail() {
         return email;

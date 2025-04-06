@@ -1,7 +1,7 @@
 package com.example.restApi.Controllers;
 
 import com.example.restApi.DTO.AddCourseDTO;
-import com.example.restApi.DTO.GiveCourseByUserDTO;
+import com.example.restApi.DTO.GiveCourseDTO;
 import com.example.restApi.Repository.ProgramcourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/secured")
+@RequestMapping("/course")
 public class CourseController {
     private UserRepository userRepository;
     private UniversityRepository universityRepository;
@@ -60,29 +60,48 @@ public class CourseController {
         return ResponseEntity.ok("Done!");
     }
     @GetMapping("/allCourse")
-    public List<ProgramCourse> allCourse(){
-        return programcourseRepository.findAll();
+    public List<GiveCourseDTO> allCourse(){
+        List<ProgramCourse> programCoursesList = programcourseRepository.findAll();
+        List<GiveCourseDTO> giveCourseDTOList = new ArrayList<>();
+
+        for(ProgramCourse programCourses : programCoursesList){
+            GiveCourseDTO giveCourseDTO = new GiveCourseDTO();
+
+            giveCourseDTO.setDescription(programCourses.getDescription());
+            giveCourseDTO.setMajor(programCourses.getMajor());
+            giveCourseDTO.setRequirement(programCourses.getRequirement());
+            University university = universityRepository.findById(programCourses.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+            giveCourseDTO.setUniversity(university.getUniversity());
+            giveCourseDTO.setId(programCourses.getId());
+
+
+
+            giveCourseDTOList.add(giveCourseDTO);
+        }
+
+        return giveCourseDTOList;
     }
     @GetMapping("/allCourseByUser")
-    public List<GiveCourseByUserDTO> getAllCourse(Principal principal){
+    public List<GiveCourseDTO> getAllCourse(Principal principal){
         User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
         List<ProgramCourse> programCoursesList = programcourseRepository.findByIduser(user.getId());
-        List<GiveCourseByUserDTO> giveCourseByUserDTOList = new ArrayList<>();
+        List<GiveCourseDTO> giveCourseDTOList = new ArrayList<>();
         for(ProgramCourse programCourses : programCoursesList){
-            GiveCourseByUserDTO giveCourseByUserDTO = new GiveCourseByUserDTO();
+            GiveCourseDTO giveCourseDTO = new GiveCourseDTO();
 
-            giveCourseByUserDTO.setDescription(programCourses.getDescription());
-            giveCourseByUserDTO.setMajor(programCourses.getMajor());
-            giveCourseByUserDTO.setRequirement(programCourses.getRequirement());
-            giveCourseByUserDTO.setUniversity(programCourses.getIduniversity());
-            giveCourseByUserDTO.setId(programCourses.getId());
+            giveCourseDTO.setDescription(programCourses.getDescription());
+            giveCourseDTO.setMajor(programCourses.getMajor());
+            giveCourseDTO.setRequirement(programCourses.getRequirement());
+            University university = universityRepository.findById(programCourses.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+            giveCourseDTO.setUniversity(university.getUniversity());
+            giveCourseDTO.setId(programCourses.getId());
 
 
 
-            giveCourseByUserDTOList.add(giveCourseByUserDTO);
+            giveCourseDTOList.add(giveCourseDTO);
         }
-        System.out.println(giveCourseByUserDTOList);
-        return giveCourseByUserDTOList;
+        System.out.println(giveCourseDTOList);
+        return giveCourseDTOList;
     }
 
 }

@@ -1,10 +1,10 @@
 package com.example.restApi.DTO;
 
-public class GiveCourseByUserDTO {
+public class GiveCourseDTO {
     private Long id;
     private String description;
     private String major;
-    private Long university;
+    private String university;
     private String requirement;
 
     public Long getId() {
@@ -31,11 +31,11 @@ public class GiveCourseByUserDTO {
         this.major = major;
     }
 
-    public Long getUniversity() {
+    public String getUniversity() {
         return university;
     }
 
-    public void setUniversity(Long university) {
+    public void setUniversity(String university) {
         this.university = university;
     }
 

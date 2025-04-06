@@ -6,6 +6,16 @@ public class SignUpDTO {
     private String email;
     private String password;
     private String fullname;
+    private String university;
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
 
     public String getFullname() {
         return fullname;

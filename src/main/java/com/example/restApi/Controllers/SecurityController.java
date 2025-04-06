@@ -3,6 +3,8 @@ package com.example.restApi.Controllers;
 import com.example.restApi.DTO.SignInDTO;
 import com.example.restApi.DTO.SignUpDTO;
 import com.example.restApi.JwtTokenSecuritySettings.JwtCore;
+import com.example.restApi.Repository.UniversityRepository;
+import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import com.example.restApi.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class SecurityController {
     private UserRepository userRepository;
+    private UniversityRepository universityRepository;
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager;
     private JwtCore jwtCore;
+    @Autowired
+    public void setUniversityRepository(UniversityRepository universityRepository) {
+        this.universityRepository = universityRepository;
+    }
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -58,11 +65,15 @@ public class SecurityController {
                     .status(HttpStatus.BAD_REQUEST)
                     .body("Choose different email");
         }
+        System.out.println(signUpDto.getName() + " " + signUpDto.getEmail() + " " + signUpDto.getUniversity());
+        University university = universityRepository.findByUniversity(signUpDto.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
         User user = new User();
         user.setName(signUpDto.getName());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         user.setFullname(signUpDto.getFullname());
+        user.setIduniversity(university.getId());
+
 
         userRepository.save(user);
         return ResponseEntity.ok("Success, baby");

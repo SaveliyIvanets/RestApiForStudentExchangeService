@@ -65,7 +65,7 @@ public class SecurityConfigurator {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/secured/**").fullyAuthenticated()
+                        .requestMatchers(HttpMethod.POST,"/course/**").fullyAuthenticated()
                         .requestMatchers(HttpMethod.POST,"/user/**").fullyAuthenticated()
                         .anyRequest().permitAll()
                 )
