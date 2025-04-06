@@ -1,6 +1,7 @@
 package com.example.restApi.Sevices;
 
 import com.example.restApi.DTO.AddCourseDTO;
+import com.example.restApi.DTO.GiveCourseDTO;
 import com.example.restApi.Repository.ProgramcourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
@@ -12,6 +13,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CourseService {
@@ -49,6 +52,35 @@ public class CourseService {
 
         programcourseRepository.save(programCourse);
     }
+    public GiveCourseDTO courseDTOConverter(ProgramCourse programCourse){
+        GiveCourseDTO giveCourseDTO = new GiveCourseDTO();
+        giveCourseDTO.setDescription(programCourse.getDescription());
+        giveCourseDTO.setMajor(programCourse.getMajor());
+        giveCourseDTO.setRequirement(programCourse.getRequirement());
+        University university = universityRepository.findById(programCourse.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+        giveCourseDTO.setUniversity(university.getUniversity());
+        giveCourseDTO.setId(programCourse.getId());
+        return giveCourseDTO;
+    }
+    public List<GiveCourseDTO> courseDTOListConverter(List<ProgramCourse> programCourseList){
+        List<GiveCourseDTO> courseDTOList = new ArrayList<>();
+        for(ProgramCourse programCourse : programCourseList){
+            courseDTOList.add(courseDTOConverter(programCourse));
+        }
+        return courseDTOList;
+
+    }
+    public List<GiveCourseDTO> allCourse(){
+        return courseDTOListConverter(programcourseRepository.findAll());
+    }
+    public List<GiveCourseDTO> getAllCourse(Principal principal){
+        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
+        List<ProgramCourse> programCoursesList = programcourseRepository.findByIduser(user.getId());
+        return courseDTOListConverter(programCoursesList);
+    }
+
+
+
 
 
 }
