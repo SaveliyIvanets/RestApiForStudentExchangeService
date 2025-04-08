@@ -2,7 +2,6 @@ package com.example.restApi.Sevices;
 
 import com.example.restApi.DTO.GiveUserDTO;
 import com.example.restApi.JwtTokenSecuritySettings.UserDetailsImpl;
-import com.example.restApi.Repository.ProgramcourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
 import com.example.restApi.model.University;
@@ -16,6 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -44,7 +45,9 @@ public class UserService implements UserDetailsService {
         return UserDetailsImpl.build(user);
     }
 
-    public GiveUserDTO userDTOConverter(User user, University university){
+    public GiveUserDTO userDTOConverter(User user){
+        System.out.println(user.getIduniversity());
+        University university = universityRepository.findById(user.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
         GiveUserDTO giveUserDto = new GiveUserDTO();
         giveUserDto.setEmail(user.getEmail());
         giveUserDto.setFullname(user.getFullname());
@@ -52,9 +55,20 @@ public class UserService implements UserDetailsService {
         giveUserDto.setUniversity(university.getUniversity());
         return giveUserDto;
     }
+    public List<GiveUserDTO> userListDTOConverter(List<User> userList){
+        List<GiveUserDTO> giveUserDTOList = new ArrayList<>();
+        for(User user : userList){
+            giveUserDTOList.add(userDTOConverter(user));
+        }
+        return giveUserDTOList;
+
+    }
     public GiveUserDTO getAllAboutUser(Principal principal){
         User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
-        University university = universityRepository.findById(user.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
-        return userDTOConverter(user,university);
+        return userDTOConverter(user);
+    }
+    public GiveUserDTO getAllAboutUserByID(Long id){
+        User user = userRepository.findById(id).orElseThrow(() -> new BadCredentialsException("User not found"));
+        return userDTOConverter(user);
     }
 }

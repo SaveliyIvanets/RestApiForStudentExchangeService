@@ -2,20 +2,15 @@ package com.example.restApi.Controllers;
 
 import com.example.restApi.DTO.AddCourseDTO;
 import com.example.restApi.DTO.GiveCourseDTO;
-import com.example.restApi.Repository.ProgramcourseRepository;
+import com.example.restApi.Repository.CourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
 import com.example.restApi.Sevices.CourseService;
-import com.example.restApi.model.ProgramCourse;
-import com.example.restApi.model.University;
-import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,7 +21,7 @@ public class CourseController {
     private CourseService courseService;
     private UserRepository userRepository;
     private UniversityRepository universityRepository;
-    private ProgramcourseRepository programcourseRepository;
+    private CourseRepository courseRepository;
     @Autowired
     public void setCourseService(CourseService courseService) {
         this.courseService = courseService;
@@ -39,8 +34,8 @@ public class CourseController {
     }
 
     @Autowired
-    public void setProgramcourseRepository(ProgramcourseRepository programcourseRepository) {
-        this.programcourseRepository = programcourseRepository;
+    public void setProgramcourseRepository(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
     }
 
 

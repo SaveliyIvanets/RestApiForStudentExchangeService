@@ -1,15 +1,10 @@
 package com.example.restApi.Controllers;
 
 import com.example.restApi.DTO.GiveUserDTO;
-import com.example.restApi.Repository.ProgramcourseRepository;
-import com.example.restApi.Repository.UniversityRepository;
-import com.example.restApi.Repository.UserRepository;
 import com.example.restApi.Sevices.UserService;
-import com.example.restApi.model.University;
-import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +21,12 @@ public class UserController {
     }
 
     @GetMapping("/getAllAboutUser")
-    public GiveUserDTO getAllAbout(Principal principal){
+    public GiveUserDTO getAllAboutUser(Principal principal){
         return userService.getAllAboutUser(principal);
+    }
+    @GetMapping("/{id}")
+    public GiveUserDTO getAllAboutUserById(@PathVariable Long id){
+        return userService.getAllAboutUserByID(id);
     }
 
 

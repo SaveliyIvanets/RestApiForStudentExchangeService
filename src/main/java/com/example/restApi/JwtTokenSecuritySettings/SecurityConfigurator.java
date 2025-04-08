@@ -67,7 +67,8 @@ public class SecurityConfigurator {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/course/**").fullyAuthenticated()
                         .requestMatchers(HttpMethod.POST,"/user/**").fullyAuthenticated()
-                        .anyRequest().permitAll()
+                        .requestMatchers(HttpMethod.POST,"/uni/**").fullyAuthenticated()
+                        .anyRequest().fullyAuthenticated()
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
 

@@ -46,4 +46,15 @@ public class GiveCourseDTO {
     public void setRequirement(String requirement) {
         this.requirement = requirement;
     }
+
+    @Override
+    public String toString() {
+        return "GiveCourseDTO{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", major='" + major + '\'' +
+                ", university='" + university + '\'' +
+                ", requirement='" + requirement + '\'' +
+                '}';
+    }
 }
