@@ -3,10 +3,9 @@ package com.example.restApi.Controllers;
 import com.example.restApi.DTO.GiveUniDTO;
 import com.example.restApi.Sevices.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/uni")
@@ -17,8 +16,12 @@ public class UniversityController {
         this.universityService = universityService;
     }
 
-    @GetMapping("/getAllAboutUni")
-    public GiveUniDTO getAllAboutUni(@RequestParam String uniName){
-        return universityService.getAllAboutUniByName(uniName);
+    @GetMapping("/{id}")
+    public GiveUniDTO getAllAboutUni(@PathVariable Long id){
+        return universityService.getAllAboutUniById(id);
+    }
+    @GetMapping("/all")
+    public List<GiveUniDTO> getAll(){
+        return universityService.getAll();
     }
 }

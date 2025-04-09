@@ -30,9 +30,7 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-		<!-- JJWT API -->
 
-		<!-- JJWT Implementation -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
@@ -40,7 +38,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- JJWT Jackson (для сериализации) -->
+
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>

@@ -2,12 +2,12 @@ package com.example.restApi.Controllers;
 
 import com.example.restApi.DTO.GiveUserDTO;
 import com.example.restApi.Sevices.UserService;
+import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 
 
@@ -28,6 +28,12 @@ public class UserController {
     public GiveUserDTO getAllAboutUserById(@PathVariable Long id){
         return userService.getAllAboutUserByID(id);
     }
+    @PostMapping("/{Id}/photo")
+    public String uploadPhoto(@PathVariable Long Id, @RequestParam("file") MultipartFile file) throws IOException {
+        return userService.uploadPhoto(Id,file);
+
+    }
+
 
 
 }

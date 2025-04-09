@@ -6,6 +6,7 @@ import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,7 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +27,16 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
 
-
     @Autowired
     public void setUniversityRepository(UniversityRepository universityRepository) {
         this.universityRepository = universityRepository;
     }
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUsersByName(username).orElseThrow(() -> new UsernameNotFoundException(
@@ -45,7 +49,7 @@ public class UserService implements UserDetailsService {
         return UserDetailsImpl.build(user);
     }
 
-    public GiveUserDTO userDTOConverter(User user){
+    public GiveUserDTO userDTOConverter(User user) {
         System.out.println(user.getIduniversity());
         University university = universityRepository.findById(user.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
         GiveUserDTO giveUserDto = new GiveUserDTO();
@@ -55,20 +59,35 @@ public class UserService implements UserDetailsService {
         giveUserDto.setUniversity(university.getUniversity());
         return giveUserDto;
     }
-    public List<GiveUserDTO> userListDTOConverter(List<User> userList){
+
+    public List<GiveUserDTO> userListDTOConverter(List<User> userList) {
         List<GiveUserDTO> giveUserDTOList = new ArrayList<>();
-        for(User user : userList){
+        for (User user : userList) {
             giveUserDTOList.add(userDTOConverter(user));
         }
         return giveUserDTOList;
 
     }
-    public GiveUserDTO getAllAboutUser(Principal principal){
+
+    public GiveUserDTO getAllAboutUser(Principal principal) {
         User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
         return userDTOConverter(user);
     }
-    public GiveUserDTO getAllAboutUserByID(Long id){
+
+    public GiveUserDTO getAllAboutUserByID(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new BadCredentialsException("User not found"));
         return userDTOConverter(user);
+    }
+
+
+    public String uploadPhoto(Long Id, MultipartFile file) throws IOException {
+        System.out.println("Размер файла: " + file.getSize());
+        System.out.println("Тип файла: " + file.getContentType());
+
+        User user = userRepository.findById(Id).orElseThrow(() -> new BadCredentialsException("User not found"));
+        user.setPhoto(file.getBytes());
+        userRepository.save(user);
+
+        return "Фото успешно загружено для пользователя ID: " + Id;
     }
 }

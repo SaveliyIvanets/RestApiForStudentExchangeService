@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,14 +45,31 @@ public class UniversityService {
     public void setCourseRepository(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
-    public GiveUniDTO getAllAboutUniByName(String uniName){
-        University university = universityRepository.findByUniversity(uniName).orElseThrow(() -> new BadCredentialsException("University not found"));
-        List<User> userList = userRepository.findByRole("mentor");
+    public GiveUniDTO getAllAboutUniById(Long id){
+        University university = universityRepository.findById(id).orElseThrow(() -> new BadCredentialsException("University not found"));
+        return uniDTOConverter(university);
+    }
+    public List<GiveUniDTO> getAll(){
+        List<University> universityList = universityRepository.findAll();
+        return uniListDTOConverter(universityList);
+    }
+    public GiveUniDTO uniDTOConverter(University university) {
+        List<User> userList = userRepository.findByRoleAndIduniversity("mentor",university.getId());
         List<Course> courseList = courseRepository.findByIduniversity(university.getId());
         GiveUniDTO giveUniDTO = new GiveUniDTO();
-        giveUniDTO.setUniversity(uniName);
+        giveUniDTO.setUniversity(university.getUniversity());
         giveUniDTO.setGiveCourseDTOList(courseService.courseDTOListConverter(courseList));
         giveUniDTO.setGiveUserDTOList(userService.userListDTOConverter(userList));
+
         return giveUniDTO;
+    }
+
+    public List<GiveUniDTO> uniListDTOConverter(List<University> uniList) {
+        List<GiveUniDTO> giveUniDTOList = new ArrayList<>();
+        for (University university : uniList) {
+            giveUniDTOList.add(uniDTOConverter(university));
+        }
+        return giveUniDTOList;
+
     }
 }
