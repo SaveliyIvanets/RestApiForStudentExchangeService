@@ -8,6 +8,8 @@ import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -80,14 +83,22 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public String uploadPhoto(Long Id, MultipartFile file) throws IOException {
-        System.out.println("Размер файла: " + file.getSize());
-        System.out.println("Тип файла: " + file.getContentType());
-
+   /* public String uploadPhoto(Long Id, MultipartFile file) throws IOException {
         User user = userRepository.findById(Id).orElseThrow(() -> new BadCredentialsException("User not found"));
-        user.setPhoto(file.getBytes());
+        user.setAvatar(Base64.getEncoder().encodeToString(file.getBytes()));
         userRepository.save(user);
-
         return "Фото успешно загружено для пользователя ID: " + Id;
     }
+    public ResponseEntity<byte[]> getPhoto(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new BadCredentialsException("User not found"));
+
+        // Декодируем Base64 обратно в byte[]
+        byte[] imageBytes = Base64.getDecoder().decode(user.getAvatar());
+
+        // Возвращаем с правильным MIME-типом
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(user.getMimeType()))
+                .body(imageBytes);
+    }*/
+//}
 }

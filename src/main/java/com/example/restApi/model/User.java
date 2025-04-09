@@ -18,17 +18,8 @@ public class User {
     private String role;
     @Column
     private Long iduniversity;
-    @Lob
     @Column
-    private byte[] photo;
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
+    private String fullname;
 
     public String getFullname() {
         return fullname;
@@ -37,9 +28,6 @@ public class User {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
-
-    @Column
-    private String fullname;
 
     public Long getIduniversity() {
         return iduniversity;
