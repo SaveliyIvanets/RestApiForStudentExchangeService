@@ -20,6 +20,16 @@ public class User {
     private Long iduniversity;
     @Column
     private String fullname;
+    @Column
+    private Long iduseravatar;
+
+    public Long getIduseravatar() {
+        return iduseravatar;
+    }
+
+    public void setIduseravatar(Long iduseravatar) {
+        this.iduseravatar = iduseravatar;
+    }
 
     public String getFullname() {
         return fullname;
