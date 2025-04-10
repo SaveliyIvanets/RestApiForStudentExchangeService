@@ -62,6 +62,7 @@ public class UserService implements UserDetailsService {
         giveUserDto.setFullname(user.getFullname());
         giveUserDto.setRole(user.getRole());
         giveUserDto.setUniversity(university.getUniversity());
+        giveUserDto.setId(user.getId());
         return giveUserDto;
     }
 

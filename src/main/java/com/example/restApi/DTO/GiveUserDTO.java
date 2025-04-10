@@ -1,10 +1,19 @@
 package com.example.restApi.DTO;
 
 public class GiveUserDTO {
+    private Long id;
     private String email;
     private String role;
     private String fullname;
     private String university;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUniversity() {
         return university;
