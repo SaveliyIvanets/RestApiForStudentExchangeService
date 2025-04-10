@@ -8,6 +8,7 @@ import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -73,32 +75,15 @@ public class UserService implements UserDetailsService {
     }
 
     public GiveUserDTO getAllAboutUser(Principal principal) {
-        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
+        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         return userDTOConverter(user);
     }
 
     public GiveUserDTO getAllAboutUserByID(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new BadCredentialsException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         return userDTOConverter(user);
     }
 
 
-   /* public String uploadPhoto(Long Id, MultipartFile file) throws IOException {
-        User user = userRepository.findById(Id).orElseThrow(() -> new BadCredentialsException("User not found"));
-        user.setAvatar(Base64.getEncoder().encodeToString(file.getBytes()));
-        userRepository.save(user);
-        return "Фото успешно загружено для пользователя ID: " + Id;
-    }
-    public ResponseEntity<byte[]> getPhoto(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new BadCredentialsException("User not found"));
 
-        // Декодируем Base64 обратно в byte[]
-        byte[] imageBytes = Base64.getDecoder().decode(user.getAvatar());
-
-        // Возвращаем с правильным MIME-типом
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(user.getMimeType()))
-                .body(imageBytes);
-    }*/
-//}
 }

@@ -9,8 +9,10 @@ import com.example.restApi.model.Course;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -39,9 +41,9 @@ public class CourseService {
         this.universityRepository = universityRepository;
     }
     public void addCourse(Principal principal, AddCourseDTO addCourseDTO){
-        University university = universityRepository.findByUniversity(addCourseDTO.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+        University university = universityRepository.findByUniversity(addCourseDTO.getUniversity()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         User user = userRepository.findByName(principal.getName())
-                .orElseThrow(() -> new BadCredentialsException("User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
 
         Course course = new Course();
         course.setDescription(addCourseDTO.getDescription());
@@ -57,7 +59,7 @@ public class CourseService {
         giveCourseDTO.setDescription(course.getDescription());
         giveCourseDTO.setMajor(course.getMajor());
         giveCourseDTO.setRequirement(course.getRequirement());
-        University university = universityRepository.findById(course.getIduniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
+        University university = universityRepository.findById(course.getIduniversity()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         giveCourseDTO.setUniversity(university.getUniversity());
         giveCourseDTO.setId(course.getId());
         return giveCourseDTO;
@@ -74,7 +76,7 @@ public class CourseService {
         return courseDTOListConverter(courseRepository.findAll());
     }
     public List<GiveCourseDTO> getAllCourse(Principal principal){
-        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new BadCredentialsException("User not found"));
+        User user = userRepository.findByName(principal.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         List<Course> coursesList = courseRepository.findByIduser(user.getId());
         return courseDTOListConverter(coursesList);
     }

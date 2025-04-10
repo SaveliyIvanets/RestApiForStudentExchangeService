@@ -10,8 +10,10 @@ import com.example.restApi.model.Course;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class UniversityService {
         this.courseRepository = courseRepository;
     }
     public GiveUniDTO getAllAboutUniById(Long id){
-        University university = universityRepository.findById(id).orElseThrow(() -> new BadCredentialsException("University not found"));
+        University university = universityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         return uniDTOConverter(university);
     }
     public List<GiveUniDTO> getAll(){

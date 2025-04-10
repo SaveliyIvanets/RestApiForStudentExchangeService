@@ -2,6 +2,7 @@ package com.example.restApi.Controllers;
 
 import com.example.restApi.Sevices.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,8 +17,12 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
-    @PostMapping("setAvatar/{Id}")
-    public String uploadPhoto(@PathVariable Long Id, @RequestParam("file") MultipartFile file) throws IOException {
-         return photoService.uploadPhoto(Id,file);
+    @PostMapping("setAvatar/{id}")
+    public String uploadPhoto(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+         return photoService.uploadPhoto(id,file);
+     }
+     @GetMapping("/{id}")
+     public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
+        return photoService.getPhoto(id);
      }
 }
