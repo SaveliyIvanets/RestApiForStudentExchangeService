@@ -13,6 +13,26 @@ public class University {
     private Long id;
     @Column
     private String university;
+    @Column
+    private Long iduniversityavatar;
+    @Column
+    private Long iduniversityheader;
+
+    public Long getIduniversityavatar() {
+        return iduniversityavatar;
+    }
+
+    public void setIduniversityavatar(Long iduniversityavatar) {
+        this.iduniversityavatar = iduniversityavatar;
+    }
+
+    public Long getIduniversityheader() {
+        return iduniversityheader;
+    }
+
+    public void setIduniversityheader(Long iduniversityheader) {
+        this.iduniversityheader = iduniversityheader;
+    }
 
     public Long getId() {
         return id;

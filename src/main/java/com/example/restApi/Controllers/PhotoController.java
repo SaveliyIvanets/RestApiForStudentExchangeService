@@ -17,12 +17,29 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
-    @PostMapping("setAvatar/{id}")
-    public String uploadPhoto(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
-         return photoService.uploadPhoto(id,file);
+    @PostMapping("setUserAvatar/{id}")
+    public String uploadPhotoUser(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+         return photoService.uploadPhotoUser(id,file);
      }
-     @GetMapping("/{id}")
-     public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
-        return photoService.getPhoto(id);
+     @GetMapping("/user/{id}")
+     public ResponseEntity<byte[]> getPhotoUser(@PathVariable Long id) {
+        return photoService.getPhotoUser(id);
      }
+     @PostMapping("/setUniversityAvatar/{id}")
+     public String uploadPhotoUniversity(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+         return photoService.uploadPhotoUniversity(id,file);
+     }
+    @GetMapping("/university/avatar/{id}")
+    public ResponseEntity<byte[]> getPhotoUniversity(@PathVariable Long id) {
+        return photoService.getPhotoUniversity(id);
+    }
+    @PostMapping("/setUniversityHeader/{id}")
+    public String uploadHeaderUniversity(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+        return photoService.uploadHeaderUniversity(id,file);
+    }
+    @GetMapping("/university/header/{id}")
+    public ResponseEntity<byte[]> getHeaderUniversity(@PathVariable Long id) {
+        return photoService.getHeaderUniversity(id);
+    }
+
 }

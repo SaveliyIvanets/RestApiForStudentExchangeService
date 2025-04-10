@@ -3,8 +3,8 @@ package com.example.restApi.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "useravatar")
-public class UserAvatar {
+@Table(name = "userphoto")
+public class UserPhoto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
