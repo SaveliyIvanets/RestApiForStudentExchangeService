@@ -62,6 +62,7 @@ public class UniversityService {
         giveUniDTO.setUniversity(university.getUniversity());
         giveUniDTO.setGiveCourseDTOList(courseService.courseDTOListConverter(courseList));
         giveUniDTO.setGiveUserDTOList(userService.userListDTOConverter(userList));
+        giveUniDTO.setId(university.getId());
 
         return giveUniDTO;
     }
