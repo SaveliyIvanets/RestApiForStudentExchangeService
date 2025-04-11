@@ -1,0 +1,28 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: build image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/pro_cifra_backend:latest .
+      - name: push image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/pro_cifra_backend:latest
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 82.202.142.224  >> ~/.ssh/known_hosts
+      - name: script
+        run: ssh -i ~/.ssh/id_rsa eroha@82.202.142.224 'sudo ./backend_script.sh'
