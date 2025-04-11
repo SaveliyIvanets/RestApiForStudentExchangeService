@@ -51,7 +51,8 @@ public class CourseService {
         course.setMajor(addCourseDTO.getMajor());
         course.setIduser(user.getId());
         course.setRequirement(addCourseDTO.getRequirement());
-
+        course.setCoursecode(addCourseDTO.getCoursecode());
+        course.setMinscore(addCourseDTO.getMinscore());
         courseRepository.save(course);
     }
     public GiveCourseDTO courseDTOConverter(Course course){
@@ -62,6 +63,8 @@ public class CourseService {
         University university = universityRepository.findById(course.getIduniversity()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         giveCourseDTO.setUniversity(university.getUniversity());
         giveCourseDTO.setId(course.getId());
+        giveCourseDTO.setCoursecode(course.getCoursecode());
+        giveCourseDTO.setMinscore(course.getMinscore());
         return giveCourseDTO;
     }
     public List<GiveCourseDTO> courseDTOListConverter(List<Course> courseList){

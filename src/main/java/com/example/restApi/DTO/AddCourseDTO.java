@@ -5,6 +5,24 @@ public class AddCourseDTO {
     private String description;
     private String major;
     private String requirement;
+    private String coursecode;
+    private double minscore;
+
+    public String getCoursecode() {
+        return coursecode;
+    }
+
+    public void setCoursecode(String coursecode) {
+        this.coursecode = coursecode;
+    }
+
+    public double getMinscore() {
+        return minscore;
+    }
+
+    public void setMinscore(double minscore) {
+        this.minscore = minscore;
+    }
 
     public String getRequirement() {
         return requirement;

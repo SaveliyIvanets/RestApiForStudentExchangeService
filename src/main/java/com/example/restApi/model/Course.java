@@ -19,6 +19,26 @@ public class Course {
     private Long iduser;
     @Column
     private String requirement;
+    @Column
+    private double minscore;
+    @Column
+    private String coursecode;
+
+    public double getMinscore() {
+        return minscore;
+    }
+
+    public void setMinscore(double minscore) {
+        this.minscore = minscore;
+    }
+
+    public String getCoursecode() {
+        return coursecode;
+    }
+
+    public void setCoursecode(String coursecode) {
+        this.coursecode = coursecode;
+    }
 
     public String getRequirement() {
         return requirement;
