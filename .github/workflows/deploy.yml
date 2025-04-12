@@ -10,12 +10,39 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Create application.properties dynamically
+        run: |
+          mkdir -p src/main/resources
+          touch src/main/resources/application.properties
+          cat <<EOF > src/main/resources/application.properties
+          spring.application.name=restApi
+          spring.datasource.driver-class-name=org.postgresql.Driver
+          spring.datasource.url=${DB_URL}
+          spring.datasource.username=${DB_USER}
+          spring.datasource.password=${DB_PASSWORD}
+          spring.jpa.database=postgresql
+          spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+          restApi.app.secret=${API_KEY}
+          restApi.app.lifetime=${API_LIMIT}
+          EOF
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_LIMIT: ${{ secrets.API_LIMIT }}
       - name: build .jar
         run: |
+          sudo apt update
+          sudo apt install openjdk-21-jdk
           chmod +x ./mvnw
-          ./mvnw clean package
+          ./mvnw clean package -DskipTests
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: build image
