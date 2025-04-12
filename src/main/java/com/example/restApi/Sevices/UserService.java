@@ -84,6 +84,18 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         return userDTOConverter(user);
     }
+    public List<GiveUserDTO> getByString(String user){
+        List<User> userList = userRepository.findAll();
+        List<GiveUserDTO> giveUserDTOList = userListDTOConverter(userList);
+        List<GiveUserDTO> returnUserDTOList = new ArrayList<>();
+        for(GiveUserDTO giveUserDTO : giveUserDTOList){
+            if(giveUserDTO.getFullname().contains(user)){
+                returnUserDTOList.add(giveUserDTO);
+            }
+        }
+        return  returnUserDTOList;
+
+    }
 
 
 

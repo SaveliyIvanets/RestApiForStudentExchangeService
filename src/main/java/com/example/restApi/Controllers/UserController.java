@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Base64;
+import java.util.List;
 
 
 @RestController
@@ -29,5 +30,9 @@ public class UserController {
     @GetMapping("/{id}")
     public GiveUserDTO getAllAboutUserById(@PathVariable Long id){
         return userService.getAllAboutUserByID(id);
+    }
+    @GetMapping("/getByString")
+    public List<GiveUserDTO> getByString(@RequestParam String user){
+        return userService.getByString(user);
     }
 }
