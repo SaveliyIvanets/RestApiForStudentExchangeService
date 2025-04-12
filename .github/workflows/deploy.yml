@@ -16,6 +16,25 @@ jobs:
           distribution: 'temurin'
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Create application.properties dynamically
+        run: |
+          cat <<EOF > src/main/resources/application.properties
+          spring.application.name=restApi
+          spring.datasource.driver-class-name=org.postgresql.Driver
+          spring.datasource.url=${DB_URL}
+          spring.datasource.username=${DB_USER}
+          spring.datasource.password=${DB_PASSWORD}
+          spring.jpa.database=postgresql
+          spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+          restApi.app.secret=${API_KEY}
+          restApi.app.limit=${API_LIMIT}
+          EOF
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_LIMIT: ${{ secrets.API_LIMIT }}
       - name: build .jar
         run: |
           sudo apt update
