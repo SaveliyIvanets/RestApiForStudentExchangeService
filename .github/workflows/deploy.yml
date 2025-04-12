@@ -29,7 +29,7 @@ jobs:
           spring.jpa.database=postgresql
           spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
           restApi.app.secret=${API_KEY}
-          restApi.app.limit=${API_LIMIT}
+          restApi.app.lifetime=${API_LIMIT}
           EOF
         env:
           DB_URL: ${{ secrets.DB_URL }}
