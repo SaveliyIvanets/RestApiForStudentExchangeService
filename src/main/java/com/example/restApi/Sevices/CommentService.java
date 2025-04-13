@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,20 +29,11 @@ public class CommentService {
         commentByUser.setComment(commentDTO.getComment());
         commentByUser.setIduser(commentDTO.getIduser());
         commentByUser.setIdcourse(commentDTO.getIdcourse());
+        commentByUser.setIdanswerto(commentDTO.getIdanswerto());
         commentByUserRepository.save(commentByUser);
-        return "OK";
+        return commentByUser.getId().toString();
     }
 
-    public String doCommentToAnotherComment(CommentDTO commentDTO) {
-        CommentByUser commentByUser = new CommentByUser();
-        commentByUser.setComment(commentDTO.getComment());
-        commentByUser.setIduser(commentDTO.getIduser());
-        commentByUser.setIdcourse(commentDTO.getIdcourse());
-        CommentByUser anotherComment = commentByUserRepository.findById(commentDTO.getIdanswerto()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
-        anotherComment.setIdanswerto(commentDTO.getIdanswerto());
-        commentByUserRepository.save(commentByUser);
-        return "OK";
-    }
 
     public HashMap<Long, CommentByUser> CommentListToHashMap(List<CommentByUser> commentByUsers) {
         HashMap<Long, CommentByUser> commentHashMap = new HashMap<>();
@@ -49,17 +41,51 @@ public class CommentService {
             commentHashMap.put(comment.getId(), comment);
         }
         return commentHashMap;
+    }
 
-        /*public List<CommentDTO> getCommentListByComment(){
+    public List<CommentByUser> getCommentListByComment(CommentByUser commentByUser, Long idCourse) {
+        HashMap<Long, CommentByUser> commentHashMap = CommentListToHashMap(commentByUserRepository.findByIdcourse(idCourse).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))));
+        List<CommentByUser> commentList = new ArrayList<>();
+        while(commentByUser.getIdanswerto() != null){
+            commentList.add(commentByUser);
+            commentByUser = commentHashMap.get(commentByUser.getIdanswerto());
+        }
+        return commentList;
+    }
 
-        }*/
-       /* public List<List<CommentDTO>> getCommentByIdCourse (Long idCourse){
-            List<List<CommentByUser>> commentsList = new ArrayList<>();
-            List<CommentByUser> allComents = commentByUserRepository.findByIdcourse(idCourse).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+    public List<List<CommentByUser>> getCommentByIdCourse(Long idCourse) {
 
-        }*/
+        List<Long> visitedCommentList = new ArrayList<>();
+        List<List<CommentByUser>> returnCommentList = new ArrayList<>();
+        List<CommentByUser> allComents = commentByUserRepository.findByIdcourse(idCourse).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        HashMap<Long, CommentByUser> commentHashMap = CommentListToHashMap(commentByUserRepository.findByIdcourse(idCourse).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))));
+        Collections.reverse(allComents);
+
+
+        for(CommentByUser comment : allComents){
+            List<CommentByUser> commentList = new ArrayList<>();
+            if(visitedCommentList.contains(comment.getId())){
+                continue;
+            }
+            while(comment.getIdanswerto() != null){
+                commentList.add(comment);
+                visitedCommentList.add(comment.getId());
+                comment = commentHashMap.get(comment.getIdanswerto());
+            }
+            commentList.add(comment);
+            visitedCommentList.add(comment.getId());
+            Collections.reverse(commentList);
+
+            returnCommentList.add(commentList);
+            Collections.reverse(returnCommentList);
+        }
+        return returnCommentList;
+
 
 
     }
 
+
 }
+
+
