@@ -30,6 +30,9 @@ jobs:
           spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
           restApi.app.secret=${API_KEY}
           restApi.app.lifetime=${API_LIMIT}
+          spring.jpa.defer-datasource-initialization=true
+          spring.jpa.hibernate.ddl-auto=update
+          spring.sql.init.mode=always
           EOF
         env:
           DB_URL: ${{ secrets.DB_URL }}
