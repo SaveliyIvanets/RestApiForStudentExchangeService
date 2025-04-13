@@ -9,7 +9,8 @@ public class CommentByUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @Column(columnDefinition = "TEXT")
     private String comment;
     @Column
     private Long idanswerto;

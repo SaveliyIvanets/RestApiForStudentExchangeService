@@ -10,7 +10,7 @@ public class User {
     private Long id;
     @Column
     private String name;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String password;
     @Column
     private String email;

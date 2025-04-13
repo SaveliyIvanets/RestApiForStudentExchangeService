@@ -9,9 +9,9 @@ public class UniversityHeader {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String header;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String headermimetype;
 
     public Long getId() {

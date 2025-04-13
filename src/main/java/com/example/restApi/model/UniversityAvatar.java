@@ -9,7 +9,7 @@ public class UniversityAvatar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String avatar;
     @Column
     private String avatarmimetype;

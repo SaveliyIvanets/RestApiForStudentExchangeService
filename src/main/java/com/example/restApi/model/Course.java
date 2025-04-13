@@ -9,7 +9,7 @@ public class Course {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Column
     private String major;
@@ -17,7 +17,7 @@ public class Course {
     private Long iduniversity;
     @Column
     private Long iduser;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String requirement;
     @Column
     private double minscore;
