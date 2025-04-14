@@ -96,6 +96,12 @@ public class UserService implements UserDetailsService {
         return  returnUserDTOList;
 
     }
+    public String seMentor(Long id){
+        User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        user.setRole("mentor");
+        userRepository.save(user);
+        return "Ok";
+    }
 
 
 

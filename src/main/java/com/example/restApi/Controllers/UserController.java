@@ -35,4 +35,8 @@ public class UserController {
     public List<GiveUserDTO> getByString(@RequestParam String user){
         return userService.getByString(user);
     }
+    @PostMapping("/{id}/mentor")
+    public String setMentor(@PathVariable("id") Long id){
+        return userService.seMentor(id);
+    }
 }
