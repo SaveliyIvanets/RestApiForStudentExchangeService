@@ -42,17 +42,6 @@ public class CommentService {
         }
         return commentHashMap;
     }
-
-    public List<CommentByUser> getCommentListByComment(CommentByUser commentByUser, Long idCourse) {
-        HashMap<Long, CommentByUser> commentHashMap = CommentListToHashMap(commentByUserRepository.findByIdcourse(idCourse).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))));
-        List<CommentByUser> commentList = new ArrayList<>();
-        while(commentByUser.getIdanswerto() != null){
-            commentList.add(commentByUser);
-            commentByUser = commentHashMap.get(commentByUser.getIdanswerto());
-        }
-        return commentList;
-    }
-
     public List<List<CommentByUser>> getCommentByIdCourse(Long idCourse) {
 
         List<Long> visitedCommentList = new ArrayList<>();

@@ -31,7 +31,7 @@ public class CourseService {
     }
 
     @Autowired
-    public void setProgramcourseRepository(CourseRepository courseRepository) {
+    public void setСourseRepository(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
 

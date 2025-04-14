@@ -73,6 +73,7 @@ public class SecurityController {
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         user.setFullname(signUpDto.getFullname());
         user.setIduniversity(university.getId());
+        user.setRole("mentor");
 
 
         userRepository.save(user);
