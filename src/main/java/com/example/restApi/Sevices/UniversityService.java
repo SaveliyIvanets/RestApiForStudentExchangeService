@@ -59,8 +59,9 @@ public class UniversityService {
         GiveUniDTO giveUniDTO = new GiveUniDTO();
         List<User> mentorList = userRepository.findByRoleAndIduniversity("mentor",university.getId());
         List<User> creatorList = userRepository.findByRoleAndIduniversity("creator",university.getId());
+        //strange logic by my frontend man :/
         if(!creatorList.isEmpty()){
-            giveUniDTO.setCreator(userService.userDTOConverter(creatorList.getFirst()));
+            mentorList.add(creatorList.getFirst());
         }
         List<Course> courseList = courseRepository.findByIduniversity(university.getId());
         giveUniDTO.setUniversity(university.getUniversity());

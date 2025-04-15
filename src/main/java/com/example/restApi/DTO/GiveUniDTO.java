@@ -7,15 +7,8 @@ public class GiveUniDTO {
     private String university;
     private List<GiveCourseDTO> giveCourseDTOList;
     private List<GiveUserDTO> mentorList;
-    private GiveUserDTO creator;
 
-    public GiveUserDTO getCreator() {
-        return creator;
-    }
 
-    public void setCreator(GiveUserDTO creator) {
-        this.creator = creator;
-    }
 
     public Long getId() {
         return id;
