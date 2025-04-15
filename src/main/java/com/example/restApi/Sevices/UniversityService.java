@@ -78,6 +78,9 @@ public class UniversityService {
             giveUniDTOList.add(uniDTOConverter(university));
         }
         return giveUniDTOList;
-
+    }
+    public GiveUniDTO giveUniversityByUniversity(String name){
+        University university = universityRepository.findByUniversity(name).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        return uniDTOConverter(university);
     }
 }

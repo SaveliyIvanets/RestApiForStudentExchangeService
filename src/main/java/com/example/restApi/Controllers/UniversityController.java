@@ -24,4 +24,8 @@ public class UniversityController {
     public List<GiveUniDTO> getAll(){
         return universityService.getAll();
     }
+    @GetMapping("/giveUniversityByName")
+    public GiveUniDTO getAll(@RequestParam("name") String name){
+        return universityService.giveUniversityByUniversity(name);
+    }
 }

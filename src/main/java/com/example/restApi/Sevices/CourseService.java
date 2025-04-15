@@ -83,6 +83,10 @@ public class CourseService {
         List<Course> coursesList = courseRepository.findByIduser(user.getId());
         return courseDTOListConverter(coursesList);
     }
+    public GiveCourseDTO giveCourseById(Long id){
+        Course course = courseRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        return courseDTOConverter(course);
+    }
 
 
 

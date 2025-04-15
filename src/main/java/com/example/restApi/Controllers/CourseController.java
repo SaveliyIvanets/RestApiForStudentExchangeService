@@ -57,5 +57,9 @@ public class CourseController {
     public List<GiveCourseDTO> getAllCourse(Principal principal){
         return courseService.getAllCourse(principal);
     }
+    @GetMapping("courseById/{id}")
+    public GiveCourseDTO giveCourse(@PathVariable("id") Long id){
+        return courseService.giveCourseById(id);
+    }
 
 }
