@@ -56,12 +56,16 @@ public class UniversityService {
         return uniListDTOConverter(universityList);
     }
     public GiveUniDTO uniDTOConverter(University university) {
-        List<User> userList = userRepository.findByRoleAndIduniversity("mentor",university.getId());
-        List<Course> courseList = courseRepository.findByIduniversity(university.getId());
         GiveUniDTO giveUniDTO = new GiveUniDTO();
+        List<User> mentorList = userRepository.findByRoleAndIduniversity("mentor",university.getId());
+        List<User> creatorList = userRepository.findByRoleAndIduniversity("creator",university.getId());
+        if(!creatorList.isEmpty()){
+            giveUniDTO.setCreator(userService.userDTOConverter(creatorList.getFirst()));
+        }
+        List<Course> courseList = courseRepository.findByIduniversity(university.getId());
         giveUniDTO.setUniversity(university.getUniversity());
         giveUniDTO.setGiveCourseDTOList(courseService.courseDTOListConverter(courseList));
-        giveUniDTO.setGiveUserDTOList(userService.userListDTOConverter(userList));
+        giveUniDTO.setMentorList(userService.userListDTOConverter(mentorList));
         giveUniDTO.setId(university.getId());
 
         return giveUniDTO;

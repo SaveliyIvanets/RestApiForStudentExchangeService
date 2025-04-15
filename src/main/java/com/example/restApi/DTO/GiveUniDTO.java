@@ -6,7 +6,16 @@ public class GiveUniDTO {
     private Long id;
     private String university;
     private List<GiveCourseDTO> giveCourseDTOList;
-    private List<GiveUserDTO> giveUserDTOList;
+    private List<GiveUserDTO> mentorList;
+    private GiveUserDTO creator;
+
+    public GiveUserDTO getCreator() {
+        return creator;
+    }
+
+    public void setCreator(GiveUserDTO creator) {
+        this.creator = creator;
+    }
 
     public Long getId() {
         return id;
@@ -16,12 +25,12 @@ public class GiveUniDTO {
         this.id = id;
     }
 
-    public List<GiveUserDTO> getGiveUserDTOList() {
-        return giveUserDTOList;
+    public List<GiveUserDTO> getMentorList() {
+        return mentorList;
     }
 
-    public void setGiveUserDTOList(List<GiveUserDTO> giveUserDTOList) {
-        this.giveUserDTOList = giveUserDTOList;
+    public void setMentorList(List<GiveUserDTO> mentorList) {
+        this.mentorList = mentorList;
     }
 
 
