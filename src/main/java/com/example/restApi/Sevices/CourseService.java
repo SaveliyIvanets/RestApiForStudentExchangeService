@@ -89,7 +89,8 @@ public class CourseService {
     }
 
 
+    public List<GiveCourseDTO> giveCourseByIdUser(Long id) {
+        return courseDTOListConverter(courseRepository.findByIduser(id));
 
-
-
+    }
 }

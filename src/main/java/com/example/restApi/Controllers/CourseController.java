@@ -61,5 +61,10 @@ public class CourseController {
     public GiveCourseDTO giveCourse(@PathVariable("id") Long id){
         return courseService.giveCourseById(id);
     }
+    @GetMapping("courseByIdUser/{id}")
+    public List<GiveCourseDTO> giveCourseByIdUser(@PathVariable("id") Long id){
+        return courseService.giveCourseByIdUser(id);
+    }
+
 
 }
