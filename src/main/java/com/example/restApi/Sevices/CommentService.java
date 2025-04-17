@@ -73,6 +73,30 @@ public class CommentService {
 
 
     }
+    public CommentDTO checkCommentPath(CommentDTO commentDTO){
+        List<List<CommentByUser>> allCommentList = getCommentByIdCourse(commentDTO.getIdcourse());
+        List<CommentByUser> commentByCourseId = commentByUserRepository.findByIdcourse(commentDTO.getIdcourse()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        HashMap<Long, CommentByUser> commentHashMap = CommentListToHashMap(commentByUserRepository.findByIdcourse(commentDTO.getIdcourse()).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))));
+        Long id = -1L;
+        boolean flag = false;
+        for(CommentByUser comment : commentByCourseId){
+            if(comment.getIdanswerto() != null && comment.getIdanswerto().equals(commentDTO.getIdanswerto())){
+                for(List<CommentByUser> peaceOfCommentList : allCommentList){
+                    for(CommentByUser commentByPeaceOfCommentList : peaceOfCommentList){
+                        if(commentByPeaceOfCommentList.getId().equals(comment.getId())){
+                            flag = true;
+                        }
+                        id = commentByPeaceOfCommentList.getId();
+                    }
+                    if(flag){
+                        commentDTO.setIdanswerto(id);
+                        return commentDTO;
+                    }
+                }
+            }
+        }
+        return commentDTO;
+    }
 
 
 

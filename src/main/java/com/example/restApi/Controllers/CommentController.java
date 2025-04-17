@@ -18,6 +18,7 @@ public class CommentController {
     }
     @PostMapping("/addComment")
     public String addComment(@RequestBody CommentDTO commentDTO){
+        commentDTO = commentService.checkCommentPath(commentDTO);
         return commentService.doComment(commentDTO);
     }
     @GetMapping("/allCommentByIdCourse")
