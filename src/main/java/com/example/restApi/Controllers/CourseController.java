@@ -65,6 +65,9 @@ public class CourseController {
     public List<GiveCourseDTO> giveCourseByIdUser(@PathVariable("id") Long id){
         return courseService.giveCourseByIdUser(id);
     }
-
+    @DeleteMapping("deleteCourseById/{id}")
+    public String deleteCourse(@PathVariable("id") Long id){
+        return courseService.deleteCourse(id);
+    }
 
 }

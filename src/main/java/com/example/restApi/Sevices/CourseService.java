@@ -2,9 +2,11 @@ package com.example.restApi.Sevices;
 
 import com.example.restApi.DTO.AddCourseDTO;
 import com.example.restApi.DTO.GiveCourseDTO;
+import com.example.restApi.Repository.CommentByUserRepository;
 import com.example.restApi.Repository.CourseRepository;
 import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.Repository.UserRepository;
+import com.example.restApi.model.CommentByUser;
 import com.example.restApi.model.Course;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
@@ -23,7 +25,11 @@ public class CourseService {
     private UserRepository userRepository;
     private UniversityRepository universityRepository;
     private CourseRepository courseRepository;
-
+    private CommentByUserRepository commentByUserRepository;
+    @Autowired
+    public void setCommentByUserRepository(CommentByUserRepository commentByUserRepository) {
+        this.commentByUserRepository = commentByUserRepository;
+    }
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -92,5 +98,12 @@ public class CourseService {
     public List<GiveCourseDTO> giveCourseByIdUser(Long id) {
         return courseDTOListConverter(courseRepository.findByIduser(id));
 
+    }
+    public String deleteCourse(Long id){
+        Course course = courseRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        List<CommentByUser> commentListByCourseId = commentByUserRepository.findByIdcourse(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        commentByUserRepository.deleteAll(commentListByCourseId);
+        courseRepository.delete(course);
+        return "OK";
     }
 }
