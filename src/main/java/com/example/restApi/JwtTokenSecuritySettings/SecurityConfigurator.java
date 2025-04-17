@@ -67,8 +67,10 @@ public class SecurityConfigurator {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/photo/**").fullyAuthenticated()
                         .requestMatchers(HttpMethod.POST,"/course/**").fullyAuthenticated()
+                        .requestMatchers(HttpMethod.DELETE,"/course/**").fullyAuthenticated()
                         .requestMatchers(HttpMethod.GET,"/course/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/user/**").fullyAuthenticated()
+
                         .requestMatchers("/uni/**").permitAll()
                         .anyRequest().fullyAuthenticated()
                 )
