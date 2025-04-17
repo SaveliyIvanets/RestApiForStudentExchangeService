@@ -1,12 +1,24 @@
 package com.example.restApi.DTO;
 
 
+import jakarta.validation.constraints.Email;
+
 public class SignUpDTO {
     private String name;
+    @Email(message = "Email should be valid")
     private String email;
     private String password;
     private String fullname;
     private String university;
+    private String programcode;
+
+    public String getProgramcode() {
+        return programcode;
+    }
+
+    public void setProgramcode(String programcode) {
+        this.programcode = programcode;
+    }
 
     public String getUniversity() {
         return university;

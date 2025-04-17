@@ -1,6 +1,7 @@
 package com.example.restApi.model;
 
 import jakarta.persistence.*;
+import org.springframework.validation.annotation.Validated;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +13,7 @@ public class User {
     private String name;
     @Column(columnDefinition = "TEXT")
     private String password;
+
     @Column
     private String email;
     @Column
@@ -22,6 +24,16 @@ public class User {
     private String fullname;
     @Column
     private Long iduseravatar;
+    @Column(name="programcode")
+    private String programCode;
+
+    public String getProgramCode() {
+        return programCode;
+    }
+
+    public void setProgramCode(String programCode) {
+        this.programCode = programCode;
+    }
 
     public Long getIduseravatar() {
         return iduseravatar;

@@ -7,6 +7,7 @@ import com.example.restApi.Repository.UniversityRepository;
 import com.example.restApi.model.University;
 import com.example.restApi.model.User;
 import com.example.restApi.Repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class SecurityController {
     }
 
     @PostMapping("/signup")
-    ResponseEntity<?> signup(@RequestBody SignUpDTO signUpDto) {
+    ResponseEntity<?> signup(@RequestBody @Valid SignUpDTO signUpDto) {
         if (userRepository.existsUserByName(signUpDto.getName())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Choose different username");
@@ -65,7 +66,6 @@ public class SecurityController {
                     .status(HttpStatus.BAD_REQUEST)
                     .body("Choose different email");
         }
-        System.out.println(signUpDto.getName() + " " + signUpDto.getEmail() + " " + signUpDto.getUniversity());
         University university = universityRepository.findByUniversity(signUpDto.getUniversity()).orElseThrow(() -> new BadCredentialsException("University not found"));
         User user = new User();
         user.setName(signUpDto.getName());
@@ -73,6 +73,7 @@ public class SecurityController {
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         user.setFullname(signUpDto.getFullname());
         user.setIduniversity(university.getId());
+        user.setProgramCode(signUpDto.getProgramcode());
 
 
         userRepository.save(user);
